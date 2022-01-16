@@ -30,7 +30,7 @@ with open('words.txt', newline='', encoding='utf-8') as fl:
 console.print('[purple] Total Bitcoin Addresses Loaded and Checking : [/purple]',str (line_count))
 console.print("[purple]Starting search... Please Wait [/purple]")
 console.print("==========================================================")
-divs = int(input(" 📋How Many Derivation Paths m/44'/0'/0'/0/ to m/44'/0'/0'/999/ ✍️ -> "))
+divs = int(input(" 📋How Many Derivation Paths  m/44'/0'/0'/0/0/ to m/44'/0'/0'/0/999 ✍️ -> "))
 
 
 
