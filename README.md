@@ -6,7 +6,15 @@ Installation
 To install this library and its dependencies use:
 
 pip install mnemonic
+
+New Version 12or24 Word Choice.
+
+![image](https://user-images.githubusercontent.com/88630056/150636896-1abda724-adb8-4251-bc34-b23ee084a772.png)
+
+![image](https://user-images.githubusercontent.com/88630056/150636907-1cd2e5c8-a443-4978-93d9-8ac8095b010e.png)
+
 Usage examples
+
 Import library into python project via:
 
 from mnemonic import Mnemonic
