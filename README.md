@@ -9,7 +9,11 @@
 Installation
 To install this library and its dependencies use:
 
+pip installrich
+
 pip install mnemonic
+
+pip install bip32utils
 
 New Version 12or24 Word Choice.
 
