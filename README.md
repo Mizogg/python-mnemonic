@@ -1,7 +1,7 @@
 # python-mnemonic
 🐍 Mnemonic code for generating deterministic keys, BIP39
 
-wordsearch_ice.py
+wordsearch_ice.py Both compressed and Uncompressed Bitcoin Addresses
 
 ![image](https://user-images.githubusercontent.com/88630056/166108291-c35e26be-a186-4ea1-8da4-27dc55b13345.png)![image](https://user-images.githubusercontent.com/88630056/166108313-98ca7dfc-23b4-4e6f-8627-07e4295147a4.png)
 
