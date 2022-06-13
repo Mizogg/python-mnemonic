@@ -90,11 +90,12 @@ prompt= console.print('''[yellow]
     *    Option 1. Words  From File            =  1    *
     *    Option 2. Numbers From File           =  2    *
     *    Option 3. 12 Random Words  Generated  =  3    *
-    *    Option 4. 24 Random Words  Generated  =  4    *    
+    *    Option 4. 24 Random Words  Generated  =  4    *
+    *    Option 5. WORD LIST FILE MADE 12/24   =  5    *    
     *                                                  *
     [yellow]*************** BTC&ETH Menu Version ***************[/yellow]
     
- Enter Your Choice 1/2/3/4 ''')
+ Enter Your Choice 1/2/3/4/5 ''')
 count=0
 start=int(input('Type HERE : '))
 prompt1 = console.print('''[yellow] 📋How Many Derivation Paths? [/yellow]
@@ -104,6 +105,47 @@ prompt1 = console.print('''[yellow] 📋How Many Derivation Paths? [/yellow]
 divs=int(input('Type HERE : '))
 while True:
     count+=1
+    if start == 5:
+        for i in range(0,len(mylist)):
+            data = []
+            mnemonic_words = mylist[i]
+            #mnemonic_words = 'assist air special hunt slogan daughter spy reunion winter boost alpha among steak space father situate ahead floor door prison aware demand cross shine' # 17MdcGxXXFWuRPBpd4NDr2vWTCwmAtJrHK
+            mnemo = Mnemonic("english")
+            seed = mnemo.to_seed(mnemonic_words, passphrase="")
+            ammount = '0 BTC'
+            ammountETH = '0 ETH'
+            data_wallet()
+            for target_wallet in data:
+                bal = xBal(target_wallet['address'])
+                bal1 = xBal1(target_wallet['uaddr'])
+                bal2 = xBal2(target_wallet['ethadd'])
+                if bal != str(ammount) or bal1 != str(ammount) or bal2 != str(ammountETH):
+                    console.print('[green]\nmnemonic_words  : [/green]', mnemonic_words)
+                    console.print('[purple]Derivation Path : [/purple]', target_wallet['path'], '[green] : Bitcoin AddressCompressed   : [/green]', target_wallet['address'], '[green] : Balance : [/green]', bal)
+                    console.print('[purple]Derivation Path : [/purple]', target_wallet['path'], '[green] : Bitcoin AddressUnCompressed : [/green]', target_wallet['uaddr'], '[green] : Balance : [/green]', bal1)
+                    console.print('[purple]Derivation Path : [/purple]', target_wallet['path2'], '[green] : ETH Address      : [/green]', target_wallet['ethadd'], '[green] : Balance : [/green]', bal2)
+                    console.print('[green]Privatekey WIF Compressed   : [/green]', target_wallet['privatekey'])
+                    console.print('[green]Privatekey WIF UnCompressed : [/green]', target_wallet['wifu'])
+                    console.print('[green]Privatekey HEX  : [/green]', target_wallet['privatekeyhex'])
+                    console.print('[green]Privatekey DEC  : [/green]', target_wallet['seed'])
+                    with open("winner.txt", "a") as f:
+                        f.write(f"""\nMnemonic_words:  {mnemonic_words}
+                        Derivation Path:  {target_wallet['path']}    Public Address BitcoinCompressed   :  {target_wallet['address']} : Balance : {bal}
+                        Derivation Path:  {target_wallet['path']}    Public Address BitcoinUnCompressed :  {target_wallet['uaddr']} : Balance : {bal1}
+                        Derivation Path:  {target_wallet['path2']}    Public Address ETH :  {target_wallet['ethadd']} : Balance : {bal2}
+                        Privatekey WIF Compressed  :  {target_wallet['privatekey']}
+                        Privatekey WIF UnCompressed:  {target_wallet['wifu']}
+                        Privatekey HEX:  {target_wallet['privatekeyhex']}
+                        Privatekey DEC:  {target_wallet['seed']}""")
+                else:
+                    console.print('[red]\nmnemonic_words  : [/red]', mnemonic_words)
+                    console.print('[purple]Derivation Path : [/purple]', target_wallet['path'], '[red] : Bitcoin AddressCompressed   : [/red]', target_wallet['address'], '[red] : Balance : [/red]', bal)
+                    console.print('[purple]Derivation Path : [/purple]', target_wallet['path'], '[red] : Bitcoin AddressUnCompressed : [/red]', target_wallet['uaddr'], '[red] : Balance : [/red]', bal1)
+                    console.print('[purple]Derivation Path : [/purple]', target_wallet['path2'], '[red] : ETH Address        : [/red]', target_wallet['ethadd'], '[red] : Balance : [/red]', bal2)
+                    console.print('[red]Privatekey WIF Compressed   : [/red]', target_wallet['privatekey'])
+                    console.print('[red]Privatekey WIF UnCompressed : [/red]', target_wallet['wifu'])
+                    console.print('[red]Privatekey HEX  : [/red]', target_wallet['privatekeyhex'])
+                    console.print('[red]Privatekey DEC  : [/red]', target_wallet['seed'])
     if start == 1:
         choice = ' '.join(random.sample(mylist, random.randint(1,12)))
         #choice = ''.join(random.sample(mylist, random.randint(1,12))) # no space
